@@ -2,6 +2,7 @@
   "name": "a-bacon-hello-world-test-extension",
   "displayName": "A Bacon Hello World Test Extension",
   "description": "This is just a hello world sample Randy Bacon is writing",
+  "publisher": "bacon-applications",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.85.0"
@@ -15,9 +16,17 @@
     "commands": [
       {
         "command": "a-bacon-hello-world-test-extension.hola",
-        "title": "List Toolbox: Hola"
+        "title": "List Toolbox: Multiple Delimeter"
       }
-    ]
+    ],
+    "keybindings": [
+      {
+          "command": "a-bacon-hello-world-test-extension.hola",
+          "key": "ctrl+alt+m",
+          "mac": "shift+cmd+m",
+          "linux": "ctrl+alt+m"
+      }
+  ]
   },
   "scripts": {
     "vscode:prepublish": "npm run package",

@@ -16,7 +16,8 @@ export function activate(context: vscode.ExtensionContext) {
 	let disposable = vscode.commands.registerCommand('a-bacon-hello-world-test-extension.hola', () => {
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
-		vscode.window.showInformationMessage('This is just like a test man!');
+		//vscode.window.showInformationMessage(`This is just like a test man! Delimeter is ${delimeter}`);
+		showInputBox();
 	});
 
 	context.subscriptions.push(disposable);
@@ -24,3 +25,19 @@ export function activate(context: vscode.ExtensionContext) {
 
 // This method is called when your extension is deactivated
 export function deactivate() {}
+
+/**
+ * Shows an input box using window.showInputBox() via vs code extension examples
+ */
+export async function showInputBox() {
+	const result = await vscode.window.showInputBox({
+		value: 'Enter Delimiter - for example \\n',
+		valueSelection: [0, 30],
+		placeHolder: 'For example: fedcba. But not: 123',
+		validateInput: text => {
+			vscode.window.showInformationMessage(`Validating: ${text}`);
+			return text === '123' ? 'Not 123!' : null;
+		}
+	});
+	vscode.window.showInformationMessage(`Got: ${result}`);
+}
